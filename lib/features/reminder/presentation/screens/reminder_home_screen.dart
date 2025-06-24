@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../routes/route_names.dart';
 import '../providers/reminder_provider.dart';
 import '../widgets/reminder_card.dart';
 
@@ -57,13 +58,7 @@ class ReminderHomeScreen extends StatelessWidget {
                   CustomButton(
                     label: 'Set Up Reminder',
                     onPressed: () {
-                      // TODO: Navigate to setup screen
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content:
-                              Text('Setup screen will be implemented soon'),
-                        ),
-                      );
+                      Navigator.pushNamed(context, RouteNames.setup);
                     },
                   ),
                 ],
@@ -89,11 +84,13 @@ class ReminderHomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: Navigate to setup screen
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Setup screen will be implemented soon'),
-            ),
+          final provider =
+              Provider.of<ReminderProvider>(context, listen: false);
+          Navigator.pushNamed(
+            context,
+            RouteNames.setup,
+            arguments:
+                provider.hasReminder ? {'reminder': provider.reminder} : null,
           );
         },
         backgroundColor: AppColors.primary,

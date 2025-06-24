@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../features/reminder/presentation/screens/reminder_home_screen.dart';
+import '../features/reminder/presentation/screens/reminder_setup_screen.dart';
+import '../features/reminder/domain/reminder_model.dart';
 import 'route_names.dart';
 
 /// App route generation
@@ -10,11 +12,13 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const ReminderHomeScreen(),
         );
-      // Setup screen will be implemented later
-      // case RouteNames.setup:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const ReminderSetupScreen(),
-      //   );
+      case RouteNames.setup:
+        final args = settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => ReminderSetupScreen(
+            initialReminder: args?['reminder'] as ReminderModel?,
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

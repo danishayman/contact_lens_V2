@@ -47,3 +47,4 @@ app.*.map.json
 
 architecture.md 
 task.md
+.vscode/

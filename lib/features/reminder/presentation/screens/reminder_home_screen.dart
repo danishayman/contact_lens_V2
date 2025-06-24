@@ -72,7 +72,7 @@ class ReminderHomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Your Contact Lens Reminder',
+                  'ReLens',
                   style: AppTextStyles.title,
                 ),
                 const SizedBox(height: 16),

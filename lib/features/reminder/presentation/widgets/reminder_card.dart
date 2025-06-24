@@ -26,7 +26,15 @@ class ReminderCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(reminder.lensType, style: AppTextStyles.subtitle),
+                Flexible(
+                  child: Text(
+                    reminder.lensType,
+                    style: AppTextStyles.subtitle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(width: 8),
                 _buildStatusBadge(daysRemaining),
               ],
             ),
@@ -76,25 +84,48 @@ class ReminderCard extends StatelessWidget {
       text = 'Change Today';
     } else if (daysRemaining <= 2) {
       badgeColor = AppColors.secondary;
-      text = '$daysRemaining days left';
+      text = '$daysRemaining days';
     } else {
       badgeColor = AppColors.success;
-      text = '$daysRemaining days left';
+      text = '$daysRemaining days';
     }
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: badgeColor.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(color: badgeColor),
       ),
-      child: Text(
-        text,
-        style: AppTextStyles.caption.copyWith(
-          color: badgeColor,
-          fontWeight: FontWeight.bold,
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (daysRemaining > 0) ...[
+            Text(
+              '$daysRemaining',
+              style: AppTextStyles.body.copyWith(
+                color: badgeColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              'days',
+              style: AppTextStyles.caption.copyWith(
+                color: badgeColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ] else
+            Text(
+              text,
+              style: AppTextStyles.caption.copyWith(
+                color: badgeColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -112,7 +143,13 @@ class ReminderCard extends StatelessWidget {
           '$label: ',
           style: AppTextStyles.caption.copyWith(fontWeight: FontWeight.bold),
         ),
-        Text(value, style: AppTextStyles.caption),
+        Expanded(
+          child: Text(
+            value,
+            style: AppTextStyles.caption,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

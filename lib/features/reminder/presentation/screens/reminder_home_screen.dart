@@ -61,6 +61,13 @@ class ReminderHomeScreen extends StatelessWidget {
                       Navigator.pushNamed(context, RouteNames.setup);
                     },
                   ),
+                  const SizedBox(height: 16),
+                  CustomButton(
+                    label: 'Test Notifications',
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteNames.notificationTest);
+                    },
+                  ),
                 ],
               ),
             );
@@ -77,6 +84,15 @@ class ReminderHomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 ReminderCard(reminder: provider.reminder!),
+                const SizedBox(height: 24),
+                Center(
+                  child: CustomButton(
+                    label: 'Test Notifications',
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteNames.notificationTest);
+                    },
+                  ),
+                ),
               ],
             ),
           );

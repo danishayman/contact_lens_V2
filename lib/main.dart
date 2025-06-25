@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'core/utils/notification_helper.dart';
 import 'features/reminder/data/reminder_local_service.dart';
 import 'features/reminder/presentation/providers/reminder_provider.dart';
 import 'routes/app_routes.dart';
 import 'routes/route_names.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await NotificationHelper.init();
   runApp(const MyApp());
 }
 

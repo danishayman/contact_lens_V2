@@ -49,7 +49,7 @@ class ReminderHomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'No reminder set up yet!',
                     style: AppTextStyles.subtitle,
                     textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class ReminderHomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'ReLens',
                   style: AppTextStyles.title,
                 ),

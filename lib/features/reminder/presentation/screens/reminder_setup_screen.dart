@@ -11,9 +11,9 @@ class ReminderSetupScreen extends StatefulWidget {
   final ReminderModel? initialReminder;
 
   const ReminderSetupScreen({
-    Key? key,
+    super.key,
     this.initialReminder,
-  }) : super(key: key);
+  });
 
   @override
   State<ReminderSetupScreen> createState() => _ReminderSetupScreenState();
@@ -139,7 +139,7 @@ class _ReminderSetupScreenState extends State<ReminderSetupScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'When did you start using your current lenses?',
                 style: AppTextStyles.subtitle,
               ),
@@ -167,7 +167,7 @@ class _ReminderSetupScreenState extends State<ReminderSetupScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 'What type of lenses do you use?',
                 style: AppTextStyles.subtitle,
               ),
@@ -186,7 +186,7 @@ class _ReminderSetupScreenState extends State<ReminderSetupScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 'How many days until you need to change them?',
                 style: AppTextStyles.subtitle,
               ),
@@ -209,7 +209,7 @@ class _ReminderSetupScreenState extends State<ReminderSetupScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 'Additional notes (optional)',
                 style: AppTextStyles.subtitle,
               ),
